@@ -27,7 +27,7 @@ Designed for investigators, auditors, compliance teams, security analysts, and a
 * Saves backups in JSON format
 * Backup files remain available even if the local log is cleared
 
-### Local-First Design
+### Local First Design
 
 * No external servers
 * No data transmission
