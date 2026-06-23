@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "My Activity Logger",
+  "version": "1.0.0",
+  "description": "Privately logs your own browsing history and search queries, stored only on your device.",
+  "permissions": ["storage", "tabs", "webNavigation", "downloads", "alarms"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "My Activity Logger"
+  }
+}

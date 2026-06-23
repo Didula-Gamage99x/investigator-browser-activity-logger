@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My Activity Logger</title>
+<style>
+  body {
+    width: 380px;
+    max-height: 500px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1a1a1a;
+    color: #e8e8e8;
+  }
+  header {
+    padding: 12px 14px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  h1 {
+    font-size: 15px;
+    margin: 0;
+    font-weight: 600;
+  }
+  .actions {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #333;
+  }
+  button {
+    flex: 1;
+    background: #2a2a2a;
+    color: #e8e8e8;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #383838;
+  }
+  #search-box {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 14px;
+  }
+  #search-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #222;
+    color: #eee;
+    font-size: 12px;
+  }
+  #log-list {
+    overflow-y: auto;
+    max-height: 330px;
+    padding: 0 14px 14px;
+  }
+  .entry {
+    padding: 8px 0;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .entry .top {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .entry .title {
+    font-size: 12.5px;
+    color: #f0f0f0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 260px;
+  }
+  .entry .badge {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .badge.search { background: #3a2d5c; color: #c9b6ff; }
+  .badge.visit { background: #2d4a5c; color: #aee0ff; }
+  .entry .url {
+    font-size: 11px;
+    color: #888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .entry .time {
+    font-size: 10.5px;
+    color: #666;
+    margin-top: 2px;
+  }
+  #empty {
+    padding: 30px 14px;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+  }
+  #lock-screen {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  #lock-screen p {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 14px;
+  }
+  #lock-screen input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #222;
+    color: #eee;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  #lock-screen button {
+    width: 100%;
+  }
+  #lock-error {
+    color: #e06c6c;
+    font-size: 11px;
+    margin-top: 8px;
+    min-height: 14px;
+  }
+</style>
+</head>
+<body>
+  <div id="lock-screen">
+    <h1 style="margin-bottom:6px;">My activity log</h1>
+    <p id="lock-instructions">Enter passcode to view this report</p>
+    <input id="passInput" type="password" placeholder="Passcode" />
+    <input id="passConfirm" type="password" placeholder="Confirm passcode" style="display:none;" />
+    <button id="unlockBtn">Unlock</button>
+    <div id="lock-error"></div>
+  </div>
+
+  <div id="report-view" style="display:none;">
+  <header>
+    <h1>My activity log</h1>
+    <span id="count" style="font-size:11px;color:#888;"></span>
+  </header>
+  <div class="actions">
+    <button id="exportBtn">Export JSON</button>
+    <button id="clearBtn">Clear all</button>
+    <button id="lockBtn">Lock</button>
+  </div>
+  <div id="search-box">
+    <input id="filterInput" type="text" placeholder="Filter by URL, title, or query..." />
+  </div>
+  <div id="log-list"></div>
+  <div id="empty" style="display:none;">No activity logged yet. Browse normally and entries will appear here.</div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
