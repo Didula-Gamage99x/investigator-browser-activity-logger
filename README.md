@@ -15,7 +15,7 @@ Designed for investigators, auditors, compliance teams, security analysts, and a
 
 ### Secure Access
 
-* Passcode-protected access
+* Passcode protected access
 * Viewing logs requires authentication
 * Exporting reports requires authentication
 * Clearing logs requires authentication
@@ -49,7 +49,7 @@ chrome://extensions
 
 ## Backup Location
 
-Backups are stored in:
+Backups are stored in,
 
 Downloads/ActivityLogBackups/
 
